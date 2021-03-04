@@ -3,14 +3,11 @@ import image from "./image.png"
 
 class Avenger extends Component {
 
-    state = {
-        movies: ["First Avenger", "Infinity War", "EndGane"],
-        likeCount: this.props.likeCount
-    };
+    state = {};
 
     showMovies = () => {
-        if(this.state.movies.length === 0 ) return <p>No Movies Available!</p>
-           return this.state.movies.map((movie,index) => (<li key={index}>{movie}</li> ))
+        if(this.props.avenger.movies.length === 0 ) return <p>No Movies Available!</p>
+           return this.props.avenger.movies.map((movie,index) => (<li key={index}>{movie}</li> ))
     };
 
     likeAvenger = (addCounter) => {
@@ -25,11 +22,11 @@ class Avenger extends Component {
                 <div className="card" style={{ width: "18rem" }}>
                     <img src={image} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 className="card-title">{this.props.avenger.name}</h5>
+                        <p className="card-text">{this.props.avenger.birthName}</p>
                         <ul>{this.showMovies()}</ul>
                         <button className="btn btn-primary" onClick={() => this.likeAvenger(1)}>
-                            Like <span className="badge bg-dark">{this.state.likeCount}</span>
+                            Like <span className="badge bg-dark">{this.props.avenger.likeCount}</span>
                         </button>
                     </div>
                 </div>
