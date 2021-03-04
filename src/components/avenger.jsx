@@ -5,7 +5,7 @@ class Avenger extends Component {
 
     state = {
         movies: ["First Avenger", "Infinity War", "EndGane"],
-        likeCount: 0
+        likeCount: this.props.likeCount
     };
 
     showMovies = () => {
@@ -28,9 +28,9 @@ class Avenger extends Component {
                         <h5 className="card-title">Card title</h5>
                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <ul>{this.showMovies()}</ul>
-                        <a href="#" className="btn btn-primary" onClick={() => this.likeAvenger(1)}>
+                        <button className="btn btn-primary" onClick={() => this.likeAvenger(1)}>
                             Like <span className="badge bg-dark">{this.state.likeCount}</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </Fragment>

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Avenger from "./avenger"
 
 class Avengers extends Component {
@@ -16,7 +16,10 @@ class Avengers extends Component {
                 <div className="row">
                     {this.state.allAvengers.map((avenger) => (
                         <div className="col" key={avenger.id}>
-                            <Avenger />
+                            <Avenger 
+                            key={avenger.id}
+                            likeCount={avenger.likeCount}
+                            />
                         </div>
                     ))}
                 </div>
