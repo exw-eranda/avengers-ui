@@ -16,7 +16,7 @@ class Avengers extends Component {
                             <Avenger
                                 avenger={avenger}
                                 onLike={() => this.likeAvenger(avenger)}
-                                onDelete={() => this.deleteAvenger(avenger)}
+                                onDelete={() => this.deleteAvenger(avenger.id)}
                             />
                         </div>
                     ))}
@@ -55,14 +55,15 @@ class Avengers extends Component {
         this.setState({ allAvengers: updatedAvenger });
     }
 
-    async deleteAvenger(avenger) {
-        await axios.delete(`http://localhost:5000/api/avengers/${avenger.id}`);
-        //get the coppy of avenger array and update it
-        let updatedAvenger = [...this.state.allAvengers];
-        let index = updatedAvenger.indexOf(avenger);
-        //   updatedAvenger[index] = {...avenger};
-        updatedAvenger.splice(index, 1);
-        //   updatedAvenger[index].likeCount ++ ;
+    async deleteAvenger(id) {
+        await axios.delete(`http://localhost:5000/api/avengers/${id}`);
+
+        // this is also working correctly
+        // let updatedAvenger = [...this.state.allAvengers];
+        // let index = updatedAvenger.indexOf(avenger);
+        // updatedAvenger.splice(index, 1);
+
+        let updatedAvenger = this.state.allAvengers.filter((avenger) => avenger.id !== id);
         this.setState({ allAvengers: updatedAvenger });
     }
 
