@@ -27,7 +27,11 @@ class Avengers extends Component {
     async componentDidMount() {
         // const avenger = await axios.get("http://localhost:5000/api/avengers");
         //require {data} obj
-        const { data } = await axios.get("http://localhost:5000/api/avengers");
+        const { data } = await axios.get(`http://localhost:5000/api/avengers`,{
+            headers: {
+                "x-jwt-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNDg2ZDQ5NmE4NWVmM2NjMDYyZTc0ZCIsImVtYWlsIjoiamhvbkBnbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTUzNjI0NjZ9.Ijw2hYvGn_nUvCUvhp4A5HPvW7lNxVX5A14AyJarbQw"
+            }
+        });
         let avengers = data.map(avenger => {
             return {
                 id: avenger._id,
@@ -56,7 +60,11 @@ class Avengers extends Component {
     }
 
     async deleteAvenger(id) {
-        await axios.delete(`http://localhost:5000/api/avengers/${id}`);
+        await axios.delete(`http://localhost:5000/api/avengers/${id}`, {
+            headers: {
+                "x-jwt-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNDg2ZDQ5NmE4NWVmM2NjMDYyZTc0ZCIsImVtYWlsIjoiamhvbkBnbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTUzNjI0NjZ9.Ijw2hYvGn_nUvCUvhp4A5HPvW7lNxVX5A14AyJarbQw"
+            }
+        });
 
         // this is also working correctly
         // let updatedAvenger = [...this.state.allAvengers];
